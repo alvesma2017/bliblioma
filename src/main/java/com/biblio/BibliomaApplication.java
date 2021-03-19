@@ -9,8 +9,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.biblio.biblio.domain.Categoria;
+import com.biblio.biblio.domain.Cidade;
+import com.biblio.biblio.domain.Estado;
 import com.biblio.biblio.domain.Livros;
 import com.biblio.biblio.repositories.CategoriaRepository;
+import com.biblio.biblio.repositories.CidadeRepository;
+import com.biblio.biblio.repositories.EstadoRepository;
 import com.biblio.biblio.repositories.LivroRepository;
 
 @SpringBootApplication
@@ -21,6 +25,11 @@ public class BibliomaApplication implements CommandLineRunner {
 	
 	@Autowired
 	private LivroRepository livroRepository;
+	
+	@Autowired
+	private EstadoRepository estadoRepository;
+	@Autowired
+	private CidadeRepository cidadeRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(BibliomaApplication.class, args);
@@ -51,5 +60,17 @@ public class BibliomaApplication implements CommandLineRunner {
 		categoriaRepository.saveAll(Arrays.asList(cat1, cat2,cat3,cat4));
 		livroRepository.saveAll(Arrays.asList(li1,li2,li3));
 		
+		Estado est1 = new Estado(null, "São Paulo");
+		Estado est2 = new Estado(null,"Minas Gerais");
+		
+		Cidade cid1 = new Cidade(null,"Campinas",est1);
+		Cidade cid2 = new Cidade(null,"Uberlandia",est2);
+		Cidade cid3 = new Cidade(null, "Bauru",est1);
+		
+		est1.getCidades().addAll(Arrays.asList(cid1,cid3));
+		est2.getCidades().addAll(Arrays.asList(cid2));
+		
+		estadoRepository.saveAll(Arrays.asList(est1, est2));
+		cidadeRepository.saveAll(Arrays.asList(cid1, cid2, cid3));
 	}
 } 
