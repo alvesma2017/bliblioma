@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Livros implements Serializable{
 
@@ -27,11 +29,14 @@ public class Livros implements Serializable{
 	private Integer nota;
 	private Double  preco;
 
+	@JsonBackReference
 	@ManyToMany
 	@JoinTable(name = "LIVRO_CATEGORIA", 
 	 joinColumns = @JoinColumn(name = "livro_id"), 
 	 inverseJoinColumns = @JoinColumn(name = "categoria_id") 
 	 )
+	
+	
 	private List<Categoria> categorias = new ArrayList<>();
 	
 	public Livros() {	
