@@ -14,6 +14,7 @@ import com.biblio.biblio.domain.Cidade;
 import com.biblio.biblio.domain.Cliente;
 import com.biblio.biblio.domain.Endereco;
 import com.biblio.biblio.domain.Estado;
+import com.biblio.biblio.domain.ItemPedido;
 import com.biblio.biblio.domain.Livros;
 import com.biblio.biblio.domain.Pagamento;
 import com.biblio.biblio.domain.PagamentoComBoleto;
@@ -26,6 +27,7 @@ import com.biblio.biblio.repositories.CidadeRepository;
 import com.biblio.biblio.repositories.ClienteRepository;
 import com.biblio.biblio.repositories.EnderecoRepository;
 import com.biblio.biblio.repositories.EstadoRepository;
+import com.biblio.biblio.repositories.ItemPedidoRepository;
 import com.biblio.biblio.repositories.LivroRepository;
 import com.biblio.biblio.repositories.PagamentoRepository;
 import com.biblio.biblio.repositories.PedidoRepository;
@@ -51,6 +53,9 @@ public class BibliomaApplication implements CommandLineRunner {
 	private PedidoRepository pedidoRepository;
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
+	@Autowired
+	private ItemPedidoRepository itemPedidoRepository;
+	
 	
 
 	public static void main(String[] args) {
@@ -121,6 +126,19 @@ public class BibliomaApplication implements CommandLineRunner {
 
 		pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
 		pagamentoRepository.saveAll(Arrays.asList(pagto1, pagto2));
+		
+		ItemPedido ip1 = new ItemPedido(ped1, li1, 0.00, 1, 2000.00);
+		ItemPedido ip2 = new ItemPedido(ped1, li3, 0.00, 2, 80.00);
+		ItemPedido ip3 = new ItemPedido(ped2, li2, 100.00, 1, 800.00);
+
+		ped1.getItens().addAll(Arrays.asList(ip1, ip2));
+		ped2.getItens().addAll(Arrays.asList(ip3));
+
+		li1.getItens().addAll(Arrays.asList(ip1));
+		li2.getItens().addAll(Arrays.asList(ip3));
+		li3.getItens().addAll(Arrays.asList(ip2));
+		
+		itemPedidoRepository.saveAll(Arrays.asList(ip1, ip2, ip3));	
 		
 	}
 	
