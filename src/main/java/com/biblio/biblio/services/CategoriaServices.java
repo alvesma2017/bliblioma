@@ -14,6 +14,7 @@ import com.biblio.biblio.domain.Categoria;
 import com.biblio.biblio.repositories.CategoriaRepository;
 import com.biblio.biblio.services.exceptions.DataIntegrityException;
 import com.biblio.biblio.services.exceptions.ObjectNotFoundException;
+import com.biblio.dto.CategoriaDTO;
 
 
 
@@ -59,5 +60,9 @@ public class CategoriaServices {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);
 	}
+	public Categoria fromDTO(CategoriaDTO objDto) {
+		return new Categoria(objDto.getId(), objDto.getNome());
 	}
+	
+}
 
