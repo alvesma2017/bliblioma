@@ -70,6 +70,9 @@ public class BibliomaApplication implements CommandLineRunner {
 		Categoria cat2 = new Categoria(null, "Policial");
 		Categoria cat3 = new Categoria(null, "Suspense e Mistério");
 		Categoria cat4 = new Categoria(null, "Ficção Científica");
+		Categoria cat5 = new Categoria(null, "Poesia");
+		Categoria cat6 = new Categoria(null, "Tec.Informação");
+		Categoria cat7 = new Categoria(null, "Literatura Infantil");
 		
 		Livros li1 = new Livros(null, "O Peão", "Steven James","Rocco","testestets",4,40.00);
 		Livros li2 = new Livros(null, "A Torre", "Steven James","Rocco","testestets",5,30.00);
@@ -84,7 +87,7 @@ public class BibliomaApplication implements CommandLineRunner {
 		li3.getCategorias().addAll(Arrays.asList(cat3));
 		
 		
-		categoriaRepository.saveAll(Arrays.asList(cat1, cat2,cat3,cat4));
+		categoriaRepository.saveAll(Arrays.asList(cat1, cat2,cat3,cat4,cat5,cat6,cat7));
 		livroRepository.saveAll(Arrays.asList(li1,li2,li3));
 		
 		Estado est1 = new Estado(null, "São Paulo");
