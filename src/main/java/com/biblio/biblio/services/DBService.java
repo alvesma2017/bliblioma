@@ -66,6 +66,7 @@ public class DBService {
 	Categoria cat5 = new Categoria(null, "Poesia");
 	Categoria cat6 = new Categoria(null, "Tec.Informação");
 	Categoria cat7 = new Categoria(null, "Literatura Infantil");
+	//Categoria cat8 = new Categoria(null, "Literatura Infantil teste");
 	
 	Livros li1 = new Livros(null, "O Peão", "Steven James","Rocco","testestets",4,40.00);
 	Livros li2 = new Livros(null, "A Torre", "Steven James","Rocco","testestets",5,30.00);
