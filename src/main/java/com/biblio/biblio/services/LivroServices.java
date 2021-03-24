@@ -34,10 +34,10 @@ public class LivroServices {
 		
 		
 	}
-	public Page<Livros> search(String nome, List<Integer> ids, Integer page, Integer linesPerPage, String orderBy, String direction) {
+	public Page<Livros> search(String titulo, List<Integer> ids, Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		List<Categoria> categorias = categoriaRepository.findAllById(ids);
-		return repo.findDistinctByNomeContainingAndCategoriasIn(nome, categorias, pageRequest);	
+		return repo.findDistinctByTituloContainingAndCategoriasIn(titulo, categorias, pageRequest);	
 	}
 	
 	}
