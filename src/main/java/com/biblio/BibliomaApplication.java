@@ -77,18 +77,39 @@ public class BibliomaApplication implements CommandLineRunner {
 		Livros li1 = new Livros(null, "O Peão", "Steven James","Rocco","testestets",4,40.00);
 		Livros li2 = new Livros(null, "A Torre", "Steven James","Rocco","testestets",5,30.00);
 		Livros li3 = new Livros(null, "O Cavalo", "Steven James","Rocco","testestets",4,60.00);
+		Livros li4 = new Livros(null, "O Bispo", "Steven James","Rocco","testestets",4,40.00);
+		Livros li5 = new Livros(null, "A Rainha", "Steven James","Rocco","testestets",5,30.00);
+		Livros li6 = new Livros(null, "A Corrente", "Tess Geritsen","Moderna","testestets",4,60.00);
+		Livros li7 = new Livros(null, "Serviço Secreto", "Lee Child","Rocco","testestets",4,40.00);
+		Livros li8 = new Livros(null, "A Origem", "Dan Brown","Rocco","testestets",5,30.00);
+		Livros li9 = new Livros(null, "Miragem em Chamas", "Lee Child","Rocco","testestets",4,60.00);
+		Livros li10 = new Livros(null, "O Iluminado", "Stephen King","Rocco","testestets",4,40.00);
+		Livros li11 = new Livros(null, "It-A Coisa", "Stephem King","Rocco","testestets",5,30.00);
+
 		
-		cat1.getLivros().addAll(Arrays.asList(li1));
-		cat2.getLivros().addAll(Arrays.asList(li1,li2));
-		cat3.getLivros().addAll(Arrays.asList(li3));
+		cat1.getLivros().addAll(Arrays.asList(li1,li6,li7));
+		cat2.getLivros().addAll(Arrays.asList(li1,li2,li5));
+		cat3.getLivros().addAll(Arrays.asList(li3,li4));
+		cat4.getLivros().addAll(Arrays.asList(li8));
+		cat5.getLivros().addAll(Arrays.asList(li9,li10));
+		cat6.getLivros().addAll(Arrays.asList(li11));
+		cat7.getLivros().addAll(Arrays.asList(li3,li4));
 		
 		li1.getCategorias().addAll(Arrays.asList(cat1,cat2));
 		li2.getCategorias().addAll(Arrays.asList(cat2));
-		li3.getCategorias().addAll(Arrays.asList(cat3));
+		li3.getCategorias().addAll(Arrays.asList(cat3,cat7));
+		li4.getCategorias().addAll(Arrays.asList(cat3,cat7));
+		li5.getCategorias().addAll(Arrays.asList(cat2));
+		li6.getCategorias().addAll(Arrays.asList(cat1));
+		li7.getCategorias().addAll(Arrays.asList(cat1));
+		li8.getCategorias().addAll(Arrays.asList(cat4));
+		li9.getCategorias().addAll(Arrays.asList(cat5));
+		li10.getCategorias().addAll(Arrays.asList(cat5));
+		li11.getCategorias().addAll(Arrays.asList(cat6));
 		
 		
 		categoriaRepository.saveAll(Arrays.asList(cat1, cat2,cat3,cat4,cat5,cat6,cat7));
-		livroRepository.saveAll(Arrays.asList(li1,li2,li3));
+		livroRepository.saveAll(Arrays.asList(li1,li2,li3,li4,li5,li6,li7,li8,li9,li10,li11));
 		
 		Estado est1 = new Estado(null, "São Paulo");
 		Estado est2 = new Estado(null,"Minas Gerais");
